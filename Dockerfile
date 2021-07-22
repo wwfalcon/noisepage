@@ -14,3 +14,8 @@ COPY . /repo
 
 WORKDIR /repo
 
+RUN mkdir build
+RUN cd build
+RUN cmake -GNinja -DCMAKE_BUILD_TYPE=Release -DNOISEPAGE_USE_JEMALLOC=ON -DNOISEPAGE_UNITY_BUILD=ON ..
+RUN ninja noisepage
+RUN ./bin/noisepage
